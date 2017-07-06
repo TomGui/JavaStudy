@@ -9,6 +9,10 @@
     <url>http://maven.apache.org</url>
 
     <properties>
+        <!-- 数据库相关版本 -->
+        <jdbc.driver.version>5.1.25</jdbc.driver.version>
+        <mybatis.version>3.2.5</mybatis.version>
+        <mybatis-spring.version>1.2.2</mybatis-spring.version>
         <!-- spring版本 -->
         <spring.version>4.2.4.RELEASE</spring.version>
         <!-- encoding -->
@@ -82,6 +86,46 @@
             <artifactId>spring-context-support</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
+        <!-- Begin: 数据库依赖包 -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>${mybatis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>${mybatis-spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${jdbc.driver.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- End: 数据库依赖包 -->
+
+        <!-- Begin: 日志依赖包 -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.16</version>
+        </dependency>
+        <!-- End: 日志依赖包 -->
+
+        <!-- Begin: aspectj相关jar包-->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.7.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.7.4</version>
+        </dependency>
+        <!-- End: aspectj相关jar包-->
     </dependencies>
     <build>
         <finalName>first-webservice</finalName>

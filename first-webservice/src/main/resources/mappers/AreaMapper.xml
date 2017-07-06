@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tom.dao.IAreaDao">
+    <!--<resultMap type="Area" id="AreaResult">-->
+        <!--<result property="id" column="id" />-->
+        <!--<result property="name" column="name" />-->
+        <!--<result property="cityId" column="cityId" />-->
+        <!--<result property="visitAmount" column="visitAmount" />-->
+        <!--<result property="addTime" column="addTime" />-->
+        <!--<result property="updateTime" column="updateTime" />-->
+    <!--</resultMap>-->
+
+    <select id="findAreas" parameterType="long" resultType="com.tom.entity.Area">
+        select * from c_area where cityId = #{cityId}
+    </select>
+</mapper>
