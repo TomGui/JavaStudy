@@ -18,10 +18,10 @@
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url"
-                  value="jdbc:mysql://121.42.230.120:3306/familydoctordb_new?useUnicode=true&amp;characterEncoding=utf8"/>
+                  value="jdbc:mysql://xx.xx.xx.xx:xx/xx?useUnicode=true&amp;characterEncoding=utf8"/>
         <!-- 改为你的地址即可 -->
-        <property name="username" value="root"/>
-        <property name="password" value="db@Admin_p@55w0rd"/>
+        <property name="username" value="xx"/>
+        <property name="password" value="xx"/>
     </bean>
 
     <!-- 配置mybatis的sqlSessionFactory -->
