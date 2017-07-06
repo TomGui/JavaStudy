@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Controller
 @RequestMapping("/area")
@@ -16,8 +17,7 @@ public class AreaController {
 
     @ResponseBody
     @RequestMapping("/list")
-    public String list() throws Exception {
-        Area area = areaService.findAreas(190).get(0);
-        return area.getName();
+    public List<Area> list() throws Exception {
+        return areaService.findAreas(190);
     }
 }
