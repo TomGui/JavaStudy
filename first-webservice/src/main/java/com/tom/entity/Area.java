@@ -2,7 +2,7 @@ package com.tom.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Area implements Serializable {
     //主键
@@ -18,10 +18,10 @@ public class Area implements Serializable {
     private BigDecimal visitAmount;
 
     //新增时间
-    private Date addTime;
+    private Timestamp addTime;
 
     //更新时间
-    private Date updateTime;
+    private Timestamp updateTime;
 
     public long getId() {
         return id;
@@ -55,19 +55,19 @@ public class Area implements Serializable {
         this.visitAmount = visitAmount;
     }
 
-    public Date getAddTime() {
+    public Timestamp getAddTime() {
         return addTime;
     }
 
-    public void setAddTime(Date addTime) {
+    public void setAddTime(Timestamp addTime) {
         this.addTime = addTime;
     }
 
-    public Date getUpdateTime() {
+    public Timestamp getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(Timestamp updateTime) {
         this.updateTime = updateTime;
     }
 }
