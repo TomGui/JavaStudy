@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tom.dao.IBloodSugarDao">
+    <insert id="add" parameterType="BloodSugar">
+        insert into
+        P_BloodSugar
+        values(#{id},#{addTime},#{dataSource},#{measureType},#{patientId},#{value},#{isNormal},#{addDoctorId})
+    </insert>
+</mapper>

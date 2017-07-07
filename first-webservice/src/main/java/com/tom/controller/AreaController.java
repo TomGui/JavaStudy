@@ -4,6 +4,7 @@ import com.tom.entity.Area;
 import com.tom.service.IAreaService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -17,7 +18,7 @@ public class AreaController {
 
     @ResponseBody
     @RequestMapping("/list")
-    public List<Area> list() throws Exception {
-        return areaService.findAreas(190);
+    public List<Area> list(@RequestParam(value = "cityId") long cityId) throws Exception {
+        return areaService.findAreas(cityId);
     }
 }
