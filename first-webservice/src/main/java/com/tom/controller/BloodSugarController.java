@@ -1,6 +1,7 @@
 package com.tom.controller;
 
 import com.tom.dto.AddBloodSugarInput;
+import com.tom.dto.OutputBase;
 import com.tom.entity.BloodSugar;
 import com.tom.service.IBloodSugarService;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,7 @@ public class BloodSugarController {
 
     @ResponseBody
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String Add(@RequestBody @Validated AddBloodSugarInput addBloodSugarInput, BindingResult bindingResult)
+    public OutputBase Add(@RequestBody @Validated AddBloodSugarInput addBloodSugarInput, BindingResult bindingResult)
             throws Exception {
         if (bindingResult.hasErrors()) {
             String errorMsg = "";
@@ -32,7 +33,7 @@ public class BloodSugarController {
             for (ObjectError objectError : allErrors) {
                 errorMsg += objectError.getDefaultMessage() + ",";
             }
-            return errorMsg;
+            return OutputBase.Fail(errorMsg);
         }
 
         BloodSugar bloodSugar = new BloodSugar();
@@ -45,8 +46,8 @@ public class BloodSugarController {
         bloodSugar.setAddDoctorId(addBloodSugarInput.getAddDoctorId());
         bloodSugar.setAddTime(new Timestamp(System.currentTimeMillis()));
         if (bloodSugarService.add(bloodSugar) > 0) {
-            return "添加成功";
+            return OutputBase.Success("添加成功");
         }
-        return "添加失败";
+        return OutputBase.Fail("添加失败");
     }
 }

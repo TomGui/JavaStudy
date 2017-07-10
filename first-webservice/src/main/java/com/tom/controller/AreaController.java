@@ -1,5 +1,6 @@
 package com.tom.controller;
 
+import com.tom.dto.WebApiOutput;
 import com.tom.entity.Area;
 import com.tom.service.IAreaService;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,8 @@ public class AreaController {
 
     @ResponseBody
     @RequestMapping("/list")
-    public List<Area> list(long cityId) throws Exception {
-        return areaService.findAreas(cityId);
+    public WebApiOutput<Area> list(long cityId) throws Exception {
+        Area result = areaService.findArea(cityId);
+        return WebApiOutput.Success(result);
     }
 }
