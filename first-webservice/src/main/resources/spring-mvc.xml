@@ -50,4 +50,6 @@
         <!-- 对资源文件内容缓存时间，单位秒 -->
         <property name="cacheSeconds" value="120"/>
     </bean>
+
+    <bean class="com.tom.Exception.CustomExceptionResolver"></bean>
 </beans>
