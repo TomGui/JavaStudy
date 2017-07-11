@@ -4,6 +4,7 @@ import com.tom.dto.WebApiOutput;
 import com.tom.entity.Area;
 import com.tom.service.IAreaService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -17,8 +18,8 @@ public class AreaController {
     private IAreaService areaService;
 
     @ResponseBody
-    @RequestMapping("/list")
-    public WebApiOutput<Area> list(long cityId) throws Exception {
+    @RequestMapping("/city/{cityId}")
+    public WebApiOutput<Area> list(@PathVariable("cityId") long cityId) throws Exception {
         Area result = areaService.findArea(cityId);
         return WebApiOutput.Success(result);
     }
