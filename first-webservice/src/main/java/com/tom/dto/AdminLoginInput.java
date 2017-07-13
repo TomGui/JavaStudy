@@ -1,5 +1,6 @@
 package com.tom.dto;
 
+import com.tom.util.MD5Util;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.NotNull;
@@ -26,7 +27,7 @@ public class AdminLoginInput {
     }
 
     public String getPassword() {
-        return password;
+        return MD5Util.MD5Encode(password, "UTF-8");
     }
 
     public void setPassword(String password) {
