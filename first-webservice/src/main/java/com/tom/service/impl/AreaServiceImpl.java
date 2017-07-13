@@ -14,7 +14,7 @@ public class AreaServiceImpl implements IAreaService {
     private IAreaDao areaDao;
 
     //查找区域列表
-    public Area findArea(long cityId) {
-        return areaDao.findArea(cityId);
+    public List<Area> findAreas(long cityId) {
+        return areaDao.findAreas(cityId);
     }
 }

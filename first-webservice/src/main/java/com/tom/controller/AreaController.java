@@ -18,9 +18,9 @@ public class AreaController {
     private IAreaService areaService;
 
     @ResponseBody
-    @RequestMapping("/city/{cityId}")
-    public WebApiOutput<Area> list(@PathVariable("cityId") long cityId) throws Exception {
-        Area result = areaService.findArea(cityId);
+    @RequestMapping("/{cityId}/list")
+    public WebApiOutput<List<Area>> list(@PathVariable("cityId") long cityId) throws Exception {
+        List<Area> result = areaService.findAreas(cityId);
         return WebApiOutput.Success(result);
     }
 }

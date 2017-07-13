@@ -2,7 +2,9 @@ package com.tom.service;
 
 import com.tom.entity.Area;
 
+import java.util.List;
+
 public interface IAreaService {
     //查找区域列表
-    Area findArea(long cityId);
+    List<Area> findAreas(long cityId);
 }
