@@ -1,15 +1,21 @@
 package com.tom.dto;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.validation.constraints.NotNull;
 
 public class AdminLoginInput {
     // 登录名
+    @NotBlank(message = "{adminLoginInput.loginName.isNull}")
     @NotNull(message = "{adminLoginInput.loginName.isNull}")
     private String loginName;
 
     // 密码
+    @NotBlank(message = "{adminLoginInput.password.isNull}")
     @NotNull(message = "{adminLoginInput.password.isNull}")
     private String password;
+
+    private boolean rememberMe;
 
     public String getLoginName() {
         return loginName;
@@ -25,5 +31,13 @@ public class AdminLoginInput {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isRememberMe() {
+        return rememberMe;
+    }
+
+    public void setRememberMe(boolean rememberMe) {
+        this.rememberMe = rememberMe;
     }
 }
