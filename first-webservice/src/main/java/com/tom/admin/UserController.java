@@ -34,6 +34,7 @@ public class UserController {
         if (administrator == null) {
             return "login";
         }
-        return "index";
+
+        return "redirect:/administrator/index";
     }
 }
