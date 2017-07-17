@@ -1,8 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="caterpillar" tagdir="/WEB-INF/tags" %>
-<%@tag pageEncoding="UTF-8" %>
-<%@tag trimDirectiveWhitespaces="true" %>
-<%@tag body-content="scriptless" %>
+<%@ tag pageEncoding="UTF-8" %>
+<%@ tag trimDirectiveWhitespaces="true" %>
+<%@ tag body-content="scriptless" %>
 <%@ attribute name="title" required="true" type="java.lang.String" %>
 <c:set var="rootpath" value="${ pageContext.request.contextPath}" scope="request"/>
 <!DOCTYPE html>
@@ -525,7 +525,7 @@
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                            data-close-others="true" aria-expanded="false">
                             <img alt="" class="img-circle" src="${pageContext.request.contextPath}/images/医生.png">
-                            <span class="username username-hide-on-mobile">@currentLoginUser.LoginName</span>
+                            <span class="username username-hide-on-mobile">${sessionScope.currentLoginUser.loginName}</span>
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-default">
@@ -583,8 +583,6 @@
                         <span class="selected"></span>
                     </a>
                 </li>
-                @if (!currentLoginUser.IsSuperManager)
-                {
                 <li class="nav-item" id="examinationstatisticsnav">
                     <a href="javascript:;" class="nav-link nav-toggle"
                        action="${pageContext.request.contextPath}/user/login">
@@ -593,7 +591,6 @@
                         <span class="selected"></span>
                     </a>
                 </li>
-                }
                 <li class="nav-item" id="servicepackagenav">
                     <a href="javascript:;" class="nav-link nav-toggle"
                        action="${pageContext.request.contextPath}/user/login"
@@ -621,8 +618,6 @@
                         <span class="selected"></span>
                     </a>
                 </li>
-                @if (currentLoginUser.IsSuperManager)
-                {
                 <li class="nav-item" id="citynav">
                     <a href="javascript:;" class="nav-link nav-toggle"
                        action="${pageContext.request.contextPath}/user/login"
@@ -659,7 +654,6 @@
                         <span class="selected"></span>
                     </a>
                 </li>
-                }
             </ul>
         </div>
     </div>

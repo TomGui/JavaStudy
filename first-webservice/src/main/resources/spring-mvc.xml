@@ -61,4 +61,23 @@
     </bean>
 
     <bean class="com.tom.Exception.CustomExceptionResolver"></bean>
+
+    <!--拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.tom.interceptor.LoginInterceptor">
+                <property name="allowUrls">
+                    <list>
+                        <!-- 如果请求中包含以下路径，则不进行拦截 -->
+                        <value>/login</value>
+                        <value>/js</value>
+                        <value>/css</value>
+                        <value>/assets</value>
+                        <value>/images</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

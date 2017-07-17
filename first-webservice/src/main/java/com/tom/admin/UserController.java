@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -22,7 +23,7 @@ public class UserController {
     private IAdministratorService administratorService;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(Model model, @Validated @ModelAttribute("adminLoginInput") AdminLoginInput adminLoginInput,
+    public String login(HttpSession session, Model model, @Validated @ModelAttribute("adminLoginInput") AdminLoginInput adminLoginInput,
                         BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             List<ObjectError> allErrors = bindingResult.getAllErrors();
@@ -35,6 +36,13 @@ public class UserController {
             return "login";
         }
 
+        session.setAttribute("currentLoginUser", administrator);
         return "redirect:/administrator/index";
+    }
+
+    @RequestMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "login";
     }
 }
