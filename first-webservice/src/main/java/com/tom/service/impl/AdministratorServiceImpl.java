@@ -20,8 +20,12 @@ public class AdministratorServiceImpl implements IAdministratorService {
         return administratorDao.findAdministrator(input);
     }
 
-//    public List<Administrator> getPageList(AdministratorSearchInput administratorSearchInput) {
-//        return administratorDao.getPageList(administratorSearchInput);
-//    }
+    public List<Administrator> getPageList(AdministratorSearchInput administratorSearchInput) {
+        return administratorDao.getPageList(administratorSearchInput);
+    }
+
+    public int getTotalRows(AdministratorSearchInput administratorSearchInput) {
+        return administratorDao.getTotalRows(administratorSearchInput);
+    }
 
 }

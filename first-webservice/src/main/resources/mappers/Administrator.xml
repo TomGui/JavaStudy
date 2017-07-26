@@ -8,17 +8,30 @@
         select * from s_administrator where loginName = #{loginName} and password = #{password}
     </select>
 
-    <!--<select id="getPageList" parameterType="com.tom.dto.administratorSearchInput"-->
-            <!--resultType="com.tom.entity.Administrator">-->
-        <!--select * from s_administrator-->
-        <!--&lt;!&ndash;<where>&ndash;&gt;-->
-            <!--&lt;!&ndash;&lt;!&ndash;<if test="loginName!=null">&ndash;&gt;&ndash;&gt;-->
-                <!--&lt;!&ndash;&lt;!&ndash;AND loginName LIKE concat('%',#{loginName},'%')&ndash;&gt;&ndash;&gt;-->
-            <!--&lt;!&ndash;&lt;!&ndash;</if>&ndash;&gt;&ndash;&gt;-->
-            <!--&lt;!&ndash;<if test="hospitalId!=-1">&ndash;&gt;-->
-                <!--&lt;!&ndash;AND hospitalId = #{hospitalId}&ndash;&gt;-->
-            <!--&lt;!&ndash;</if>&ndash;&gt;-->
-        <!--&lt;!&ndash;</where>&ndash;&gt;-->
-        <!--&lt;!&ndash;limit #{beginIndex},#{pageSize}&ndash;&gt;-->
-    <!--</select>-->
+    <select id="getPageList" parameterType="com.tom.dto.AdministratorSearchInput"
+            resultType="com.tom.entity.Administrator">
+        select * from s_administrator
+        <where>
+            <if test="loginName!=null">
+                AND loginName LIKE concat('%',#{loginName},'%')
+            </if>
+            <if test="hospitalId!=-1">
+                AND hospitalId = #{hospitalId}
+            </if>
+        </where>
+        limit #{beginIndex},#{pageSize}
+    </select>
+
+    <select id="getTotalRows" parameterType="com.tom.dto.AdministratorSearchInput"
+            resultType="int">
+        select COUNT(*) from s_administrator
+        <where>
+            <if test="loginName!=null">
+                AND loginName LIKE concat('%',#{loginName},'%')
+            </if>
+            <if test="hospitalId!=-1">
+                AND hospitalId = #{hospitalId}
+            </if>
+        </where>
+    </select>
 </mapper>

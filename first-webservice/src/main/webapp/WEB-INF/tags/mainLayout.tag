@@ -15,7 +15,6 @@
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <meta content="Preview page of Metronic Admin Theme #2 for echart demos" name="description"/>
     <link href="${pageContext.request.contextPath}/assets/pages/css/profile.min.css" rel="stylesheet"/>
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/css/common.css" rel="stylesheet"/>
     <!--图片上传-->

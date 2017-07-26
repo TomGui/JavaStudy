@@ -9,5 +9,7 @@ import java.util.List;
 public interface IAdministratorService {
     Administrator findAdministrator(AdminLoginInput input);
 
-//    List<Administrator> getPageList(AdministratorSearchInput administratorSearchInput);
+    List<Administrator> getPageList(AdministratorSearchInput administratorSearchInput);
+
+    int getTotalRows(AdministratorSearchInput administratorSearchInput);
 }

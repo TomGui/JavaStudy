@@ -18,28 +18,25 @@
         </tr>
         </thead>
         <tbody>
-        <%--<c:if test="${items!=null&&items.size()>0}">--%>
-            <%--<c:forEach var="item" items="${items}">--%>
+        <c:if test="${items!=null&&items.size()>0}">
+            <c:forEach var="item" items="${items}">
                 <tr>
-                    <%--<td>${item.loginName}</td>--%>
-                    <%--<td>${item.hospitalId}</td>--%>
-                    <%--<td>${item.userDesc}</td>--%>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>2</td>
+                    <td>${item.loginName}</td>
+                    <td>${item.hospitalId}</td>
+                    <td>${item.userDesc}</td>
                     <td>
                         <button type="button" class="btn btn-default btn-sm" data-toggle="modal"
-                                onclick="Edit(2)">
+                                onclick="Edit(${item.id})">
                             编辑
                         </button>
                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                onclick="Delete(3)">
+                                onclick="Delete(${item.id})">
                             删除
                         </button>
                     </td>
                 </tr>
-            <%--</c:forEach>--%>
-        <%--</c:if>--%>
+            </c:forEach>
+        </c:if>
         </tbody>
     </table>
 </div>
@@ -48,18 +45,18 @@
 <script>
     $(function () {
         $("#pagetoolbar").bs_pagination({
-            currentPage: 1,
+            currentPage: ${currentPage},
             rowsPerPage: 10,
             maxRowsPerPage: 100,
-            totalPages: 100,
-            totalRows: 100,
+            totalPages: ${totalPages},
+            totalRows: ${totalRows},
             showGoToPage: true,
             showRowsPerPage: false,
             showRowsInfo: false,
             showRowsDefaultInfo: true,
 
             onChangePage: function (data, param) { // 点击后返回page_num和rows_per_page
-                $("#PageIndex").val(param.currentPage);
+                $("#pageIndex").val(param.currentPage);
                 $.ajax({
                     type: "GET",
                     url: "${pageContext.request.contextPath}/administrator/list",

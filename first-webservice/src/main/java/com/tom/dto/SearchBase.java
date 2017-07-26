@@ -2,7 +2,7 @@ package com.tom.dto;
 
 public class SearchBase {
     // 分页大小
-    private int pageSize = 10;
+    private int pageSize = 1;
 
     // 分页页号（从1开始）
     private int pageIndex = 1;
@@ -24,6 +24,6 @@ public class SearchBase {
     }
 
     public int getBeginIndex() {
-        return (pageIndex - 1) * 10;
+        return (pageIndex - 1) * pageSize;
     }
 }

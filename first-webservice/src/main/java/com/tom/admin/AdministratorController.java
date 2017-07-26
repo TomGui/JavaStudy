@@ -27,9 +27,12 @@ public class AdministratorController {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model, AdministratorSearchInput administratorSearchInput) {
-//        List<Administrator> list = administratorService.getPageList(administratorSearchInput);
-
-//        model.addAttribute("items",);
+        List<Administrator> list = administratorService.getPageList(administratorSearchInput);
+        int totalRows = administratorService.getTotalRows(administratorSearchInput);
+        model.addAttribute("items", list);
+        model.addAttribute("currentPage", administratorSearchInput.getPageIndex());
+        model.addAttribute("totalRows", totalRows);
+        model.addAttribute("totalPages", totalRows / administratorSearchInput.getPageSize());
         return "views/AdministratorList";
     }
 
