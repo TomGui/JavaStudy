@@ -3,7 +3,22 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tom.dao.IAdministratorDao">
-    <select id="findAdministrator" parameterType="com.tom.dto.AdminLoginInput" resultType="com.tom.entity.Administrator">
+    <select id="findAdministrator" parameterType="com.tom.dto.AdminLoginInput"
+            resultType="com.tom.entity.Administrator">
         select * from s_administrator where loginName = #{loginName} and password = #{password}
     </select>
+
+    <!--<select id="getPageList" parameterType="com.tom.dto.administratorSearchInput"-->
+            <!--resultType="com.tom.entity.Administrator">-->
+        <!--select * from s_administrator-->
+        <!--&lt;!&ndash;<where>&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash;<if test="loginName!=null">&ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash;AND loginName LIKE concat('%',#{loginName},'%')&ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash;</if>&ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;<if test="hospitalId!=-1">&ndash;&gt;-->
+                <!--&lt;!&ndash;AND hospitalId = #{hospitalId}&ndash;&gt;-->
+            <!--&lt;!&ndash;</if>&ndash;&gt;-->
+        <!--&lt;!&ndash;</where>&ndash;&gt;-->
+        <!--&lt;!&ndash;limit #{beginIndex},#{pageSize}&ndash;&gt;-->
+    <!--</select>-->
 </mapper>

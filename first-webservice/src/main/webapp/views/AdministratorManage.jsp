@@ -17,10 +17,11 @@
                             </button>
                         </div>
                     </div>
-                    <form class="form-horizontal" role="form" asp-controller="Administrator" asp-action="List"
+                    <form class="form-horizontal" role="form"
+                          action="${pageContext.request.contextPath}/administrator/list"
                           method="get" id="searchform">
-                        <input asp-for="PageIndex" hidden/>
-                        <input asp-for="HospitalId" value="-1" hidden/>
+                        <input id="pageIndex" name="pageIndex" hidden/>
+                        <input id="hospitalId" name="hospitalId" value="-1" hidden/>
                     </form>
                 </div>
                 <div class="portlet-body" id="datagrid">
@@ -61,10 +62,10 @@
         })
 
         function Search() {
-            $("#PageIndex").val(1);
+            $("#pageIndex").val(1);
             $.ajax({
                 type: "GET",
-                url: "${pageContext.request.contextPath}/user/login",
+                url: "${pageContext.request.contextPath}/administrator/list",
                 data: $("#searchform").serialize(),
                 success: function (data) {
                     $("#datagrid").empty();
@@ -76,27 +77,33 @@
         function Confirm() {
             $.ajax({
                 type: "POST",
-                url: "${pageContext.request.contextPath}/user/login" + "?id=" + userId,
+                url: "${pageContext.request.contextPath}/administrator/delete" + "?id=" + userId,
                 success: function (data) {
                     $("#deletemodal").modal("hide");
-                    if (data.IsSuccess) {
+                    if (data.success) {
                         $(".modal-backdrop.fade.in").remove();
                         //提示框
                         $("#promptmodal").empty();
-                        $("#promptmodal").load("${pageContext.request.contextPath}/user/login" + "?isSuccess=" + data.IsSuccess + "&message=" + data.Message + "&url=" + "${pageContext.request.contextPath}/user/login"
-                    )
+                        $("#promptmodal").load("${pageContext.request.contextPath}/user/login" + "?isSuccess=" + data.success + "&message=" + data.message + "&url=" + "${pageContext.request.contextPath}/administrator/index"
+                        )
                         ;
                         $("#promptmodal").modal("show");
                     } else {
                         //错误框
                         $("#errormodal").empty();
-                        $("#errormodal").load("${pageContext.request.contextPath}/user/login" + "?isSuccess=" + data.IsSuccess + "&message=" + data.Message
-                    )
+                        $("#errormodal").load("${pageContext.request.contextPath}/user/login" + "?isSuccess=" + data.success + "&message=" + data.message
+                        )
                         ;
                         $("#errormodal").modal("show");
                     }
                 }
             });
+        }
+
+        var userId;
+        function Delete(id) {
+            userId = id;
+            $("#deletemodal").modal("show");
         }
     </script>
 </ot:mainLayout>

@@ -530,7 +530,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-default">
                             <li>
-                                <a href="${pageContext.request.contextPath}/user/login">
+                                <a href="${pageContext.request.contextPath}/user/logout">
                                     <i class="icon-key"></i> 退出登录
                                 </a>
                             </li>
@@ -618,42 +618,44 @@
                         <span class="selected"></span>
                     </a>
                 </li>
-                <li class="nav-item" id="citynav">
-                    <a href="javascript:;" class="nav-link nav-toggle"
-                       action="${pageContext.request.contextPath}/user/login"
-                       onclick="$.index.sidebarClick(this)">
-                        <i class="icon-pointer"></i>
-                        <span class="title">城市</span>
-                        <span class="selected"></span>
-                    </a>
-                </li>
-                <li class="nav-item" id="areanav">
-                    <a href="javascript:;" class="nav-link nav-toggle"
-                       action="${pageContext.request.contextPath}/user/login"
-                       onclick="$.index.sidebarClick(this)">
-                        <i class="icon-social-dribbble"></i>
-                        <span class="title">地区</span>
-                        <span class="selected"></span>
-                    </a>
-                </li>
-                <li class="nav-item" id="hospitalnav">
-                    <a href="javascript:;" class="nav-link nav-toggle"
-                       action="${pageContext.request.contextPath}/user/login"
-                       onclick="$.index.sidebarClick(this)">
-                        <i class="icon-bar-chart"></i>
-                        <span class="title">医院</span>
-                        <span class="selected"></span>
-                    </a>
-                </li>
-                <li class="nav-item" id="systemnav">
-                    <a href="javascript:;" class="nav-link nav-toggle"
-                       action="${pageContext.request.contextPath}/user/login"
-                       onclick="$.index.sidebarClick(this)">
-                        <i class="icon-settings"></i>
-                        <span class="title">系统</span>
-                        <span class="selected"></span>
-                    </a>
-                </li>
+                <c:if test="${sessionScope.currentLoginUser.superManager}">
+                    <li class="nav-item" id="citynav">
+                        <a href="javascript:;" class="nav-link nav-toggle"
+                           action="${pageContext.request.contextPath}/user/login"
+                           onclick="$.index.sidebarClick(this)">
+                            <i class="icon-pointer"></i>
+                            <span class="title">城市</span>
+                            <span class="selected"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item" id="areanav">
+                        <a href="javascript:;" class="nav-link nav-toggle"
+                           action="${pageContext.request.contextPath}/user/login"
+                           onclick="$.index.sidebarClick(this)">
+                            <i class="icon-social-dribbble"></i>
+                            <span class="title">地区</span>
+                            <span class="selected"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item" id="hospitalnav">
+                        <a href="javascript:;" class="nav-link nav-toggle"
+                           action="${pageContext.request.contextPath}/user/login"
+                           onclick="$.index.sidebarClick(this)">
+                            <i class="icon-bar-chart"></i>
+                            <span class="title">医院</span>
+                            <span class="selected"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item" id="systemnav">
+                        <a href="javascript:;" class="nav-link nav-toggle"
+                           action="${pageContext.request.contextPath}/user/login"
+                           onclick="$.index.sidebarClick(this)">
+                            <i class="icon-settings"></i>
+                            <span class="title">系统</span>
+                            <span class="selected"></span>
+                        </a>
+                    </li>
+                </c:if>
             </ul>
         </div>
     </div>
